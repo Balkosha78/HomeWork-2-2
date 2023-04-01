@@ -3,8 +3,8 @@ public class Ravenclaw extends Hogwarts { //Когтевран
     private int wise;  // мудрый
     private int wit; // остроумность
     private int creativity;  //творчество
-    public Ravenclaw(String student, int powerOfMagic, int transgress, int smart, int wise, int wit, int creativity) {
-        super(student, powerOfMagic, transgress);
+    public Ravenclaw(int powerOfMagic, int transgress, int smart, int wise, int wit, int creativity) {
+        super(powerOfMagic, transgress);
         this.smart = smart;
         this.wise = wise;
         this.wit = wit;
@@ -31,7 +31,24 @@ public class Ravenclaw extends Hogwarts { //Когтевран
     public int getCreativity() {
         return creativity;
     }
+
+    public int calcAmountBall() {
+        return this.smart + this.wise + this.wit + this.creativity;
+    }
     public void setCreativity(int creativity) {
         this.creativity = creativity;
+    }
+
+    @Override
+    public int calcAmountPointsFacultatea() {
+        return this.smart +
+                this.wise +
+                this.wit +
+                this.creativity;
+    }
+
+    @Override
+    public String getFacultatea() {
+        return " Когтевран ";
     }
 }
