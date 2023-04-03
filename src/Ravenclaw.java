@@ -1,54 +1,58 @@
-public class Ravenclaw extends Hogwarts { //Когтевран
+public class Ravenclaw extends HogwartsStudent { //Когтевран
     private int smart;  //умный
     private int wise;  // мудрый
     private int wit; // остроумность
     private int creativity;  //творчество
-    public Ravenclaw(int powerOfMagic, int transgress, int smart, int wise, int wit, int creativity) {
-        super(powerOfMagic, transgress);
+
+    public Ravenclaw(String studentFulName, int powerOfMagic, int transgress, int smart, int wise, int wit, int creativity) {
+        super(studentFulName, powerOfMagic, transgress);
         this.smart = smart;
         this.wise = wise;
         this.wit = wit;
         this.creativity = creativity;
     }
+
     public int getSmart() {
         return smart;
     }
-    public void setSmart(int smart) {
-        this.smart = smart;
-    }
+
     public int getWise() {
         return wise;
     }
-    public void setWise(int wise) {
-        this.wise = wise;
-    }
+
     public int getWit() {
         return wit;
     }
-    public void setWit(int wit) {
-        this.wit = wit;
-    }
+
     public int getCreativity() {
         return creativity;
     }
 
-    public int calcAmountBall() {
-        return this.smart + this.wise + this.wit + this.creativity;
-    }
-    public void setCreativity(int creativity) {
-        this.creativity = creativity;
-    }
-
     @Override
-    public int calcAmountPointsFacultatea() {
-        return this.smart +
-                this.wise +
-                this.wit +
-                this.creativity;
+    public String toString() {
+        return "Ravenclaw{" +
+                ", studentFulName='" + studentFulName + '\'' +
+                ", powerOfMagic=" + powerOfMagic +
+                ", transgress=" + transgress +
+                "smart=" + smart +
+                ", wise=" + wise +
+                ", wit=" + wit +
+                ", creativity=" + creativity +
+                "} " + super.toString();
     }
+    private int getSkillsSum(){   //суммируем навыки
+        return smart + wise + wit + creativity;
+    }
+    public static void compareSkills(Ravenclaw student1 , Ravenclaw student2){  //Сравниваем 2 учеников по сумме навыков
+        int student1SkillsSum = student1.getSkillsSum();
+        int student2SkillsSum = student2.getSkillsSum();
+        if (student1SkillsSum > student2SkillsSum){
+            System.out.println(student1.getStudentFulName() + " лучший Когтевранец, чем  " + student2.getStudentFulName());
+        } else if (student1SkillsSum < student2SkillsSum){
+            System.out.println(student2.getStudentFulName() + " лучший Когтевранец, чем  " + student1.getStudentFulName());
+        } else {
+            System.out.println(student1.getStudentFulName() + " и " + student2.getStudentFulName() + " одинаково хороши. ");
+        }
 
-    @Override
-    public String getFacultatea() {
-        return " Когтевран ";
     }
 }

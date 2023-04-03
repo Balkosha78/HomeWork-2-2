@@ -1,50 +1,51 @@
-public class Hufflepuff extends Hogwarts { //Пуффендуй
+public class Hufflepuff extends HogwartsStudent { //Пуффендуй
     private int industriousness;  //трудолюбие
     private int fidelity;  //верность
     private int honesty;  // честность
-    public Hufflepuff(int powerOfMagic, int transgress, int industriousness, int fidelity, int honesty) {
-        super(powerOfMagic, transgress);
+
+    public Hufflepuff(String studentFulName, int powerOfMagic, int transgress, int industriousness, int fidelity, int honesty) {
+        super(studentFulName, powerOfMagic, transgress);
         this.industriousness = industriousness;
         this.fidelity = fidelity;
         this.honesty = honesty;
     }
+
     public int getIndustriousness() {
         return industriousness;
     }
-    public void setIndustriousness(int industriousness) {
-        this.industriousness = industriousness;
-    }
+
     public int getFidelity() {
         return fidelity;
     }
-    public void setFidelity(int fidelity) {
-        this.fidelity = fidelity;
-    }
+
     public int getHonesty() {
         return honesty;
-    }
-    public void setHonesty(int honesty) {
-        this.honesty = honesty;
     }
 
     @Override
     public String toString() {
         return "Hufflepuff{" +
+                ", studentFulName='" + studentFulName + '\'' +
+                ", powerOfMagic=" + powerOfMagic +
+                ", transgress=" + transgress +
                 "industriousness=" + industriousness +
                 ", fidelity=" + fidelity +
                 ", honesty=" + honesty +
-                ", powerOfMagic=" + super.getPowerOfMagic() +
-                ", transgress=" + super.getTransgress() +
-                '}';
+                "} " + super.toString();
     }
-
-    @Override
-    public int calcAmountPointsFacultatea() {
-        return this.industriousness +this.fidelity + this.honesty;
+    private int getSkillsSum(){   //суммируем навыки
+        return industriousness + fidelity + honesty;
     }
+    public static void compareSkills(Hufflepuff student1 , Hufflepuff student2){  //Сравниваем 2 учеников по сумме навыков
+        int student1SkillsSum = student1.getSkillsSum();
+        int student2SkillsSum = student2.getSkillsSum();
+        if (student1SkillsSum > student2SkillsSum){
+            System.out.println(student1.getStudentFulName() + " лучший Пуффендуец, чем  " + student2.getStudentFulName());
+        } else if (student1SkillsSum < student2SkillsSum){
+            System.out.println(student2.getStudentFulName() + " лучший Пуффендуец, чем  " + student1.getStudentFulName());
+        } else {
+            System.out.println(student1.getStudentFulName() + " и " + student2.getStudentFulName() + " одинаково хороши. ");
+        }
 
-    @Override
-    public String getFacultatea() {
-        return " Пуффендуй ";
     }
 }
